@@ -12,10 +12,13 @@ function FireworkCharge:sv_explode()
     print("FireworkCharge:sv_explode()")
 
     local up = sm.vec3.new( 0, 0, 1 )
+    local center = self.shape.worldPosition + self.shape:getBoundingBox() * 0.5
+    local radius = 1
+
     for i = 1, self.data.starCount do
         local direction = sm.noise.gunSpread( up, 360 )
         local velocity = direction * 20
-        local position = self.shape.worldPosition + direction * 0.5
+        local position = center + direction * radius
 
         -- local body = sm.body.createBody( self.shape.worldPosition, self.shape.worldRotation, true )
         -- local shape = body:createPart( obj_firework_star, sm.vec3.zero(), up, up, true )
