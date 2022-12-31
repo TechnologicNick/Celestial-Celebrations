@@ -2,18 +2,64 @@
    "partList" : [
       {
          "color" : "000000",
+         "flammable" : true,
+         "hull" : {
+            "margin" : 0.0010,
+            "pointList" : [
+               {
+                  "x" : 0.50,
+                  "y" : 0.50,
+                  "z" : 0.50
+               },
+               {
+                  "x" : 0.60,
+                  "y" : 0.50,
+                  "z" : 0.50
+               },
+               {
+                  "x" : 0.50,
+                  "y" : 0.60,
+                  "z" : 0.50
+               }
+            ],
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+         },
          "name" : "obj_firework_star",
          "physicsMaterial" : "Sand",
+         "ratings" : {
+            "density" : 1
+         },
          "renderable" : "$CONTENT_DATA/Objects/Renderables/obj_firework_star.rend",
          "rotationSet" : "SingleRotation",
          "scripted" : {
             "classname" : "FireworkStar",
             "filename" : "$CONTENT_DATA/Scripts/FireworkStar.lua"
          },
+         "showInInventory" : false,
+         "uuid" : "f6172d29-e17c-427b-a829-d84a2c151274"
+      },
+      {
+         "color" : "a48052",
+         "name" : "obj_firework_charge",
+         "physicsMaterial" : "Cardboard",
+         "ratings" : {
+            "durability" : 10
+         },
+         "renderable" : "$CONTENT_DATA/Objects/Renderables/obj_firework_star.rend",
+         "rotationSet" : "SingleRotation",
+         "scripted" : {
+            "classname" : "FireworkCharge",
+            "data" : {
+               "starCount" : 70
+            },
+            "filename" : "$CONTENT_DATA/Scripts/FireworkCharge.lua"
+         },
          "sphere" : {
             "diameter" : 1
          },
-         "uuid" : "f6172d29-e17c-427b-a829-d84a2c151274"
+         "uuid" : "09daa259-3c73-494e-8f28-e996a509ec0b"
       }
    ]
 }
