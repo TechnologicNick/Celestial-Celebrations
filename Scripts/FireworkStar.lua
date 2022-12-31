@@ -11,7 +11,7 @@ function FireworkStar:cl_onInit()
 
     do
         local effect = sm.effect.createEffect("Firework Star - Sparks", self.shape.interactable)
-        effect:setParameter("Color", sm.color.new(0xFF0000FF))
+        effect:setParameter("Color", self.shape.color)
         effect:start()
         table.insert(self.effects, effect)
     end

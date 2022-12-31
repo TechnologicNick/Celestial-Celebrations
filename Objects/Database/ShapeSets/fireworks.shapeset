@@ -4,7 +4,7 @@
          "color" : "000000",
          "name" : "obj_firework_star",
          "physicsMaterial" : "Sand",
-         "renderable" : "$SURVIVAL_DATA/Objects/Renderable/resource/obj_resource_glowpoop.rend",
+         "renderable" : "$CONTENT_DATA/Objects/Renderables/obj_firework_star.rend",
          "rotationSet" : "SingleRotation",
          "scripted" : {
             "classname" : "FireworkStar",
