@@ -3,29 +3,6 @@
       {
          "color" : "000000",
          "flammable" : true,
-         "hull" : {
-            "margin" : 0.0010,
-            "pointList" : [
-               {
-                  "x" : 0.50,
-                  "y" : 0.50,
-                  "z" : 0.50
-               },
-               {
-                  "x" : 0.60,
-                  "y" : 0.50,
-                  "z" : 0.50
-               },
-               {
-                  "x" : 0.50,
-                  "y" : 0.60,
-                  "z" : 0.50
-               }
-            ],
-            "x" : 1,
-            "y" : 1,
-            "z" : 1
-         },
          "name" : "obj_firework_star",
          "physicsMaterial" : "Sand",
          "ratings" : {
@@ -38,6 +15,9 @@
             "filename" : "$CONTENT_DATA/Scripts/FireworkStar.lua"
          },
          "showInInventory" : false,
+         "sphere" : {
+            "diameter" : 1
+         },
          "uuid" : "f6172d29-e17c-427b-a829-d84a2c151274"
       },
       {
