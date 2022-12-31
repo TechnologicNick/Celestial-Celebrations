@@ -1,0 +1,19 @@
+{
+   "partList" : [
+      {
+         "color" : "000000",
+         "name" : "obj_firework_star",
+         "physicsMaterial" : "Sand",
+         "renderable" : "$SURVIVAL_DATA/Objects/Renderable/resource/obj_resource_glowpoop.rend",
+         "rotationSet" : "SingleRotation",
+         "scripted" : {
+            "classname" : "FireworkStar",
+            "filename" : "$CONTENT_DATA/Scripts/FireworkStar.lua"
+         },
+         "sphere" : {
+            "diameter" : 1
+         },
+         "uuid" : "f6172d29-e17c-427b-a829-d84a2c151274"
+      }
+   ]
+}

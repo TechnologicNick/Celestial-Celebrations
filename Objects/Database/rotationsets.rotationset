@@ -1,3 +1,14 @@
 {
-	"rotationSet": []
+   "rotationSet" : [
+      {
+         "name" : "SingleRotation",
+         "prop" : false,
+         "rotation" : [
+            {
+               "east" : "Y",
+               "south" : "X"
+            }
+         ]
+      }
+   ]
 }

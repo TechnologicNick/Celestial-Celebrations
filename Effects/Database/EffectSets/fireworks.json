@@ -1,0 +1,21 @@
+{
+   "Firework Star - Sparks" : {
+      "effectList" : [
+         {
+            "particles" : [ "firework_star_sparks" ],
+            "type" : "particle"
+         },
+         {
+            "parameters" : [ "color", "radius", "intensity" ],
+            "type" : "pointLight"
+         }
+      ],
+      "parameterList" : {
+         "color" : "007fff",
+         "intensity" : 0.010,
+         "power" : 0.0,
+         "radius" : 1.50,
+         "velocity" : 0.0
+      }
+   }
+}
