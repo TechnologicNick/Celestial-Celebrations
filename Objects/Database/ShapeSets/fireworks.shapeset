@@ -31,15 +31,35 @@
          "rotationSet" : "SingleRotation",
          "scripted" : {
             "classname" : "FireworkCharge",
-            "data" : {
-               "starCount" : 70
-            },
             "filename" : "$CONTENT_DATA/Scripts/FireworkCharge.lua"
          },
          "sphere" : {
             "diameter" : 1
          },
          "uuid" : "09daa259-3c73-494e-8f28-e996a509ec0b"
+      },
+      {
+         "color" : "df7f01",
+         "hull" : {
+            "col" : "$GAME_DATA/Objects/Collision/obj_interactive_mountablespudgun_col.obj",
+            "x" : 1,
+            "y" : 1,
+            "z" : 4
+         },
+         "name" : "obj_mortar_tube",
+         "physicsMaterial" : "Mechanical",
+         "ratings" : {
+            "density" : 4,
+            "durability" : 4
+         },
+         "renderable" : "$GAME_DATA/Objects/Renderable/Interactive/obj_interactive_mountablespudgun.rend",
+         "rotationSet" : "PropYZ",
+         "scripted" : {
+            "classname" : "MortarTube",
+            "filename" : "$CONTENT_DATA/Scripts/MortarTube.lua"
+         },
+         "sticky" : "-Z-Y+Y-X+X",
+         "uuid" : "679f4b89-3aeb-4e17-b6c3-d4382c4d3e3b"
       }
    ]
 }

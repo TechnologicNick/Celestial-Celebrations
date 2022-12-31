@@ -2,35 +2,63 @@
 
 dofile("parts.lua")
 
+---@class FireworkChargeParams
+---@field stars { star: FireworkStarConfiguration, count: number }[]
+---@field explodeAt number
+---@field explodeVelocity number
+
 ---@class FireworkCharge : ShapeClass
----@field data { starCount: number }
+---@field params FireworkChargeParams
 FireworkCharge = class()
 
 
+local up = sm.vec3.new( 0, 0, 1 )
+local radius = 1
+
+---Create a Firework Star
+---@param fireworkStarParams FireworkStarParams
+function FireworkCharge:sv_createStar( fireworkStarParams )
+    local center = self.shape.worldPosition + self.shape:getBoundingBox() * 0.5
+
+    local direction = sm.noise.gunSpread( up, 360 )
+    local velocity = direction * 20
+    local position = center + direction * radius
+
+    -- local body = sm.body.createBody( self.shape.worldPosition, self.shape.worldRotation, true )
+    -- local shape = body:createPart( obj_firework_star, sm.vec3.zero(), up, up, true )
+    local shape = sm.shape.createPart( obj_firework_star, position, self.shape.worldRotation, true, false )
+    sm.physics.applyImpulse( shape, velocity * shape.mass, true )
+    shape.color = fireworkStarParams.color
+
+    shape.interactable:setParams(fireworkStarParams)
+end
 
 function FireworkCharge:sv_explode()
-    print("FireworkCharge:sv_explode()")
+    for _, star in ipairs( self.params.stars ) do
+        for i = 1, star.count do
+            ---@type FireworkStarParams
+            local starParams = {
+                destroyAt = sm.game.getCurrentTick() + 40 * 5,
+            }
 
-    local up = sm.vec3.new( 0, 0, 1 )
-    local center = self.shape.worldPosition + self.shape:getBoundingBox() * 0.5
-    local radius = 1
+            for k, v in pairs( star.star ) do
+                starParams[k] = v
+            end
 
-    for i = 1, self.data.starCount do
-        local direction = sm.noise.gunSpread( up, 360 )
-        local velocity = direction * 20
-        local position = center + direction * radius
+            self:sv_createStar( starParams )
+        end
+    end
+end
 
-        -- local body = sm.body.createBody( self.shape.worldPosition, self.shape.worldRotation, true )
-        -- local shape = body:createPart( obj_firework_star, sm.vec3.zero(), up, up, true )
-        local shape = sm.shape.createPart( obj_firework_star, position, self.shape.worldRotation, true, false )
-        sm.physics.applyImpulse( shape, velocity * shape.mass, true )
-        shape.color = sm.color.new( 0xFF1111FF )
+function FireworkCharge:server_onFixedUpdate( timeStep )
+    if not self.params then
+        self.shape:destroyPart(0)
+        return
+    end
 
-        ---@type FireworkStarParams
-        local params = {
-            destroyAt = sm.game.getCurrentTick() + 40 * 5,
-        }
-        shape.interactable:setParams(params)
+    if sm.game.getCurrentTick() >= self.params.explodeAt then
+        self:sv_explode()
+        self.shape:destroyPart(0)
     end
 end
 

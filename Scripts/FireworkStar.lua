@@ -1,6 +1,11 @@
 -- FireworkStar.lua
 
----@class FireworkStarParams
+dofile("parts.lua")
+
+---@class FireworkStarConfiguration
+---@field color Color The color of the Firework Star
+
+---@class FireworkStarParams : FireworkStarConfiguration
 ---@field destroyAt number The tick at which the Firework Star should be destroyed
 
 ---@class FireworkStar : ShapeClass
@@ -22,7 +27,10 @@ function FireworkStar:cl_onInit()
 end
 
 function FireworkStar:server_onFixedUpdate( timeStep )
-    if not self.params then return end
+    if not self.params then
+        self.shape:destroyPart(0)
+        return
+    end
 
     if sm.game.getCurrentTick() >= self.params.destroyAt then
         self.shape:destroyPart(0)
